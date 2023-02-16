@@ -3,7 +3,7 @@ const express = require('express');
 const axios = require('axios');
 
 
-// Load environment variables from .env file
+
 require('dotenv').config();
 
 // Use the environment variable
@@ -17,6 +17,7 @@ app.get('/weather/:postcode', async (req, res) => {
   const { default: fetch } = await import('node-fetch');
   const url = `http://api.openweathermap.org/data/2.5/weather?zip=${postcode},gb&appid=${apiKey}&units=metric`;
   try {
+    //fetch the data with the api key and the postcode provided
     const response = await fetch(url);
     const data = await response.json();
     res.json(data);
